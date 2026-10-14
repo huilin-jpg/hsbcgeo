@@ -1,0 +1,1065 @@
+<title>HSBC Malaysia AI Visibility</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Serif+4:ital@1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================= TOKENS ============================= */
+:root{
+  color-scheme: light;
+  --page:#F3F7F6;
+  --card:#FFFFFF;
+  --card-2:#EFF5F3;
+  --ink:#11201C;
+  --ink-2:#465954;
+  --ink-3:#7C8F8A;
+  --border:#DCE6E2;
+  --divider:#E9F1EE;
+  --accent:#0E8A87;
+  --accent-strong:#0B6E6C;
+  --accent-soft:#DCF1EE;
+  --accent-soft-2:#EAF7F5;
+  --good:#1E7A54;
+  --good-soft:#E1F3EA;
+  --warn:#9A6A0A;
+  --warn-soft:#FBF0DA;
+  --crit:#B23A2E;
+  --crit-soft:#FBE7E4;
+  --shadow: 0 1px 2px rgba(17,32,28,.04), 0 8px 24px -12px rgba(17,32,28,.14);
+
+  --c-wb:#2a78d6;   --c-wb-soft:#E4EEFB;
+  --c-iadb:#eb6834; --c-iadb-soft:#FCE7DB;
+  --c-adb:#1baf7a;  --c-adb-soft:#DCF3EA;
+  --c-ebrd:#eda100; --c-ebrd-soft:#FBEDD6;
+  --c-aiib:#e87ba4; --c-aiib-soft:#FBE3EC;
+  --c-ifc:#008300;  --c-ifc-soft:#DCEEDC;
+  --c-news:#2a78d6; --c-competitor:#eb6834; --c-owned:#1baf7a; --c-other:#7C8A85; --c-social:#e87ba4;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#0D1613;
+    --card:#152220;
+    --card-2:#1B2926;
+    --ink:#EAF3F0;
+    --ink-2:#B7C7C2;
+    --ink-3:#7F938D;
+    --border:#263B36;
+    --divider:#203330;
+    --accent:#39C2BC;
+    --accent-strong:#5CD6D0;
+    --accent-soft:#173430;
+    --accent-soft-2:#122622;
+    --good:#4FBE8B;
+    --good-soft:#12291F;
+    --warn:#E5AC42;
+    --warn-soft:#2B2312;
+    --crit:#E2695C;
+    --crit-soft:#301715;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -14px rgba(0,0,0,.55);
+
+    --c-wb:#3987e5;   --c-wb-soft:#152A42;
+    --c-iadb:#d95926; --c-iadb-soft:#33231A;
+    --c-adb:#199e70;  --c-adb-soft:#0F2E24;
+    --c-ebrd:#c98500; --c-ebrd-soft:#31280F;
+    --c-aiib:#d55181; --c-aiib-soft:#341F28;
+    --c-ifc:#008300;  --c-ifc-soft:#12291F;
+    --c-news:#3987e5; --c-competitor:#d95926; --c-owned:#199e70; --c-other:#8A9A94; --c-social:#d55181;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#0D1613;
+  --card:#152220;
+  --card-2:#1B2926;
+  --ink:#EAF3F0;
+  --ink-2:#B7C7C2;
+  --ink-3:#7F938D;
+  --border:#263B36;
+  --divider:#203330;
+  --accent:#39C2BC;
+  --accent-strong:#5CD6D0;
+  --accent-soft:#173430;
+  --accent-soft-2:#122622;
+  --good:#4FBE8B;
+  --good-soft:#12291F;
+  --warn:#E5AC42;
+  --warn-soft:#2B2312;
+  --crit:#E2695C;
+  --crit-soft:#301715;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -14px rgba(0,0,0,.55);
+
+  --c-wb:#3987e5;   --c-wb-soft:#152A42;
+  --c-iadb:#d95926; --c-iadb-soft:#33231A;
+  --c-adb:#199e70;  --c-adb-soft:#0F2E24;
+  --c-ebrd:#c98500; --c-ebrd-soft:#31280F;
+  --c-aiib:#d55181; --c-aiib-soft:#341F28;
+  --c-ifc:#008300;  --c-ifc-soft:#12291F;
+  --c-news:#3987e5; --c-competitor:#d95926; --c-owned:#199e70; --c-other:#8A9A94; --c-social:#d55181;
+}
+
+/* ============================= BASE ============================= */
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size:16px;
+  line-height:1.6;
+  font-variant-numeric: tabular-nums;
+}
+h1,h2,h3,h4{
+  font-family:'Manrope', system-ui, sans-serif;
+  font-weight:800;
+  letter-spacing:-0.01em;
+  text-wrap:balance;
+  margin:0;
+  color:var(--ink);
+}
+.mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+a{color:var(--accent-strong);}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+
+.shell{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  min-height:100vh;
+}
+
+/* ============================= RAIL (fixed-dark chrome) ============================= */
+.rail{
+  background:#0A1615;
+  color:#DDEDEA;
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+  padding:28px 22px 22px;
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+  border-right:1px solid #16302C;
+}
+.rail-logo img{ width:132px; height:auto; display:block; }
+.rail-title{
+  font-family:'Manrope',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#7FE0D6;
+  margin-top:4px;
+}
+.rail-sub{
+  font-family:'Manrope',sans-serif;
+  font-size:20px;
+  font-weight:800;
+  color:#F4FBFA;
+  line-height:1.25;
+}
+.rail-meta{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px;
+  color:#9BB5AF;
+  line-height:1.7;
+  border-top:1px solid #16302C;
+  border-bottom:1px solid #16302C;
+  padding:14px 0;
+}
+.rail-meta b{ color:#DDEDEA; font-weight:600; }
+.rail-nav{ display:flex; flex-direction:column; gap:2px; flex:1; }
+.rail-nav a{
+  display:flex;
+  gap:10px;
+  align-items:baseline;
+  text-decoration:none;
+  color:#9FB8B2;
+  font-family:'Manrope',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:background .15s ease, color .15s ease;
+}
+.rail-nav a .num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  color:#5B7A73;
+  font-weight:500;
+  min-width:18px;
+}
+.rail-nav a:hover{ background:#12241F; color:#F4FBFA; }
+.rail-nav a.active{ background:#123A35; color:#7FE0D6; }
+.rail-nav a.active .num{ color:#7FE0D6; }
+.rail-foot{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  color:#6E8B84;
+  line-height:1.6;
+}
+
+/* ============================= MAIN ============================= */
+.main{ min-width:0; }
+.hero{
+  padding:46px 48px 34px;
+  border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(1100px 420px at 88% -10%, var(--accent-soft-2), transparent 60%),
+    var(--card);
+}
+.eyebrow{
+  font-family:'Manrope',sans-serif;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent-strong);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+}
+.eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+.hero h1{ font-size:clamp(28px,3.1vw,40px); line-height:1.1; max-width:20ch; }
+.hero p.lede{
+  font-family:'Source Serif 4',serif;
+  font-size:17.5px;
+  color:var(--ink-2);
+  max-width:66ch;
+  margin-top:14px;
+}
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.chip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--ink-2);
+  background:var(--card-2);
+  border:1px solid var(--border);
+  padding:6px 11px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.chip b{ color:var(--ink); font-weight:600; }
+.badge-illustrative{
+  font-family:'Manrope',sans-serif; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--warn-soft); color:var(--warn); border:1px solid color-mix(in oklab, var(--warn) 35%, var(--border));
+  padding:4px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+}
+
+section{ padding:44px 48px; border-bottom:1px solid var(--divider); scroll-margin-top:14px; }
+.sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap; }
+.sec-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--accent-strong);
+  border:1px solid var(--border);
+  background:var(--accent-soft);
+  border-radius:6px;
+  padding:2px 8px;
+}
+.sec-head h2{ font-size:23px; }
+.sec-dek{
+  color:var(--ink-2);
+  font-size:15.5px;
+  max-width:76ch;
+  margin:10px 0 28px;
+}
+
+.grid{ display:grid; gap:16px; }
+.g-2{ grid-template-columns:repeat(2,1fr); }
+.g-3{ grid-template-columns:repeat(3,1fr); }
+.g-4{ grid-template-columns:repeat(4,1fr); }
+.g-5{ grid-template-columns:repeat(5,1fr); }
+@media (max-width:1100px){ .g-3{grid-template-columns:repeat(2,1fr);} .g-4{grid-template-columns:repeat(2,1fr);} .g-5{grid-template-columns:repeat(2,1fr);} }
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+
+/* KPI strip */
+.kpi{
+  display:flex; flex-direction:column; gap:6px;
+}
+.kpi .lbl{ font-family:'Manrope',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); }
+.kpi .val{ font-family:'Manrope',sans-serif; font-weight:800; font-size:34px; color:var(--ink); line-height:1; }
+.kpi .val .unit{ font-size:16px; font-weight:600; color:var(--ink-3); }
+.kpi .delta{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
+.kpi .delta.good{ color:var(--good); }
+.kpi .delta.bad{ color:var(--crit); }
+.kpi .delta.flat{ color:var(--ink-3); }
+.kpi .note{ font-size:13px; color:var(--ink-2); line-height:1.5; }
+
+/* Working vs Gap columns */
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:900px){ .split{ grid-template-columns:1fr; } }
+.split-col{ border-radius:12px; padding:22px; }
+.split-col.working{ background:var(--good-soft); border:1px solid color-mix(in oklab, var(--good) 30%, var(--border)); }
+.split-col.gap{ background:var(--warn-soft); border:1px solid color-mix(in oklab, var(--warn) 30%, var(--border)); }
+.split-col h3{ font-size:15px; display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+.split-col h3 .dot{ width:9px; height:9px; border-radius:50%; }
+.split-col.working h3 .dot{ background:var(--good); }
+.split-col.gap h3 .dot{ background:var(--warn); }
+.split-col ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+.split-col li{ font-size:14.5px; color:var(--ink); padding-left:18px; position:relative; }
+.split-col li::before{ content:"—"; position:absolute; left:0; color:var(--ink-3); }
+.split-col li b{ font-weight:600; }
+
+/* Bars */
+.barlist{ display:flex; flex-direction:column; gap:14px; }
+.barrow{ display:grid; grid-template-columns:196px 1fr 56px; align-items:center; gap:12px; }
+.barrow .name{ font-family:'Manrope',sans-serif; font-size:13.5px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:7px; }
+.barrow .name .sw{ width:10px; height:10px; border-radius:3px; flex:none; }
+.barrow .track{ height:14px; background:var(--card-2); border-radius:7px; overflow:hidden; position:relative; border:1px solid var(--border); }
+.barrow .fill{ height:100%; border-radius:7px 0 0 7px; position:relative; }
+.barrow .score{ font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right; color:var(--ink-2); }
+.badge-primary{
+  font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.04em;
+  background:var(--accent); color:#06201D; padding:1px 6px; border-radius:4px; font-weight:600;
+}
+:root[data-theme="dark"] .badge-primary{color:#062621;}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .badge-primary{color:#062621;} }
+
+.legend{ display:flex; flex-wrap:wrap; gap:14px 20px; margin-bottom:18px; }
+.legend .item{ display:flex; align-items:center; gap:7px; font-family:'Manrope',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-2); }
+.legend .sw{ width:11px; height:11px; border-radius:3px; }
+
+/* heatmap */
+.heatwrap{ overflow-x:auto; }
+table.heat{ border-collapse:collapse; width:100%; min-width:760px; }
+table.heat th, table.heat td{ padding:0; text-align:center; }
+table.heat th{
+  font-family:'Manrope',sans-serif; font-size:11.5px; font-weight:700; color:var(--ink-2);
+  padding:0 6px 10px; text-transform:uppercase; letter-spacing:.03em;
+}
+table.heat th.rowh{ text-align:left; font-size:13px; }
+table.heat td.rowh{
+  text-align:left; font-family:'Manrope',sans-serif; font-weight:700; font-size:13px; color:var(--ink);
+  padding:4px 10px 4px 0; white-space:nowrap;
+}
+table.heat td.cell{ padding:3px; }
+.hcell{
+  height:40px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; position:relative; cursor:default;
+}
+[data-tip]{ position:relative; }
+[data-tip]::after{
+  content:attr(data-tip);
+  position:absolute; left:50%; bottom:calc(100% + 8px); transform:translateX(-50%) translateY(4px);
+  background:var(--ink); color:var(--page); font-family:'Manrope',sans-serif; font-size:11.5px; font-weight:600;
+  padding:6px 10px; border-radius:7px; white-space:nowrap; opacity:0; pointer-events:none; z-index:20;
+  transition:opacity .12s ease, transform .12s ease; box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+[data-tip]::before{
+  content:""; position:absolute; left:50%; bottom:calc(100% + 3px); transform:translateX(-50%);
+  border:5px solid transparent; border-top-color:var(--ink); opacity:0; pointer-events:none; z-index:20;
+  transition:opacity .12s ease;
+}
+[data-tip]:hover::after, [data-tip]:hover::before, [data-tip]:focus::after, [data-tip]:focus::before{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+.v0{ background:var(--card-2); color:var(--ink-3); }
+.v1{ background:color-mix(in oklab, var(--accent) 22%, var(--card-2)); color:var(--ink-2); }
+.v2{ background:color-mix(in oklab, var(--accent) 46%, var(--card-2)); color:var(--ink); }
+.v3{ background:color-mix(in oklab, var(--accent) 72%, var(--card-2)); color:var(--page); font-weight:700; }
+.v4{ background:var(--accent); color:var(--page); font-weight:700; }
+
+/* citation vs mention mini bars */
+.cvm-row{ display:grid; grid-template-columns:170px 1fr 78px; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--divider); }
+.cvm-row:last-child{ border-bottom:none; }
+.cvm-name{ font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:var(--ink); display:flex; align-items:center; gap:7px; }
+.cvm-bars{ display:flex; flex-direction:column; gap:5px; }
+.cvm-track{ display:flex; align-items:center; gap:8px; }
+.cvm-lbl{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-3); width:64px; flex:none; }
+.cvm-tbar{ flex:1; height:12px; background:var(--card-2); border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+.cvm-fill{ height:100%; border-radius:6px 0 0 6px; }
+.cvm-fill.hatched{ background-image: repeating-linear-gradient(135deg, var(--hc) 0 4px, color-mix(in oklab, var(--hc) 55%, var(--card)) 4px 8px); }
+.cvm-val{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-2); width:22px; text-align:right; flex:none; }
+.rate-chip{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; padding:5px 10px; border-radius:7px; text-align:center; }
+.rate-chip.good{ background:var(--good-soft); color:var(--good); }
+.rate-chip.warn{ background:var(--warn-soft); color:var(--warn); }
+.rate-chip.crit{ background:var(--crit-soft); color:var(--crit); }
+
+/* stacked SOV bar */
+.stack{ display:flex; width:100%; height:34px; border-radius:8px; overflow:hidden; border:1px solid var(--border); }
+.stack .seg{ height:100%; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#fff; font-weight:600; }
+
+/* tables */
+table.dt{ width:100%; border-collapse:collapse; font-size:14px; }
+table.dt th{
+  text-align:left; font-family:'Manrope',sans-serif; font-size:11.5px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em; color:var(--ink-3); padding:0 12px 10px; border-bottom:1px solid var(--border);
+}
+table.dt td{ padding:11px 12px; border-bottom:1px solid var(--divider); vertical-align:middle; color:var(--ink); }
+table.dt tr:last-child td{ border-bottom:none; }
+table.dt tr.hl td{ background:var(--accent-soft); }
+table.dt .num{ font-family:'IBM Plex Mono',monospace; text-align:right; }
+.tag{
+  font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; padding:3px 8px; border-radius:5px; display:inline-block;
+  text-transform:uppercase; letter-spacing:.02em;
+}
+.tag.owned{ background:var(--c-owned-soft,var(--good-soft)); color:var(--c-owned); }
+.tag.competitor{ background:var(--c-iadb-soft); color:var(--c-competitor); }
+.tag.neutral{ background:var(--card-2); color:var(--ink-3); }
+.tag.social{ background:var(--c-aiib-soft); color:var(--c-social); }
+.tag.offtopic{ background:var(--crit-soft); color:var(--crit); }
+.dt-scroll{ overflow-x:auto; }
+
+/* journalist / voice cards */
+.jcard{ display:flex; gap:14px; align-items:flex-start; }
+.jcard img{ width:50px; height:50px; border-radius:50%; object-fit:cover; border:1px solid var(--border); flex:none; background:var(--card-2); }
+.avatar{ width:50px; height:50px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; color:var(--page); }
+.jcard .jname{ font-family:'Manrope',sans-serif; font-weight:800; font-size:15px; color:var(--ink); }
+.jcard .jrole{ font-size:13px; color:var(--ink-2); margin-top:1px; }
+.jcard .jbeat{ margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
+.jcard .jquote{ font-size:13.5px; color:var(--ink); margin-top:10px; line-height:1.5; }
+.mbar{ margin-top:10px; height:6px; background:var(--card-2); border-radius:3px; overflow:hidden; }
+.mbar .f{ height:100%; background:var(--accent); border-radius:3px; }
+.jmeta{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-3); margin-top:6px; }
+
+/* gap cards */
+.gapcard{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--divider); }
+.gapcard:last-child{ border-bottom:none; }
+.sev{ font-family:'Manrope',sans-serif; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; padding:4px 10px; border-radius:6px; text-align:center; height:fit-content; }
+.sev.critical{ background:var(--crit-soft); color:var(--crit); }
+.sev.high{ background:var(--warn-soft); color:var(--warn); }
+.sev.medium{ background:var(--accent-soft); color:var(--accent-strong); }
+.sev.low{ background:var(--card-2); color:var(--ink-3); }
+.gapcard h4{ font-size:16.5px; margin-bottom:6px; }
+.gapcard p{ margin:0 0 8px; font-size:14.5px; color:var(--ink-2); }
+.gapcard .action{ font-size:14px; color:var(--ink); background:var(--card-2); border-left:3px solid var(--accent); padding:10px 12px; border-radius:0 8px 8px 0; }
+.gapcard .action b{ font-family:'Manrope',sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--accent-strong); display:block; margin-bottom:3px; }
+
+/* roadmap */
+.road{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:1000px){ .road{ grid-template-columns:1fr 1fr; } }
+.road .phase{ border-left:3px solid var(--accent); padding-left:16px; }
+.road .phase .when{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--accent-strong); text-transform:uppercase; letter-spacing:.04em; }
+.road .phase h4{ font-size:16px; margin:6px 0 10px; }
+.road .phase ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+.road .phase li{ font-size:13.5px; color:var(--ink-2); padding-left:14px; position:relative; }
+.road .phase li::before{ content:"›"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.road .phase .owner{ display:block; font-family:'Manrope',sans-serif; font-size:11px; color:var(--ink-3); margin-top:2px; }
+
+/* console / prompt block */
+.console{
+  background:#0A1615; color:#CFEFE9; border-radius:10px; padding:16px 18px; font-family:'IBM Plex Mono',monospace;
+  font-size:13.5px; line-height:1.7; overflow-x:auto;
+}
+.console .p1{ color:#5FD9CE; }
+.console .p2{ color:#F4FBFA; }
+
+/* tagcloud */
+.tagcloud{ display:flex; flex-wrap:wrap; gap:8px 10px; align-items:baseline; }
+.tagcloud span{ font-family:'Manrope',sans-serif; color:var(--ink-2); font-weight:600; }
+.tagcloud .t1{ font-size:26px; color:var(--ink); font-weight:800; }
+.tagcloud .t2{ font-size:20px; color:var(--ink); font-weight:700; }
+.tagcloud .t3{ font-size:16px; }
+.tagcloud .t4{ font-size:13px; color:var(--ink-3); font-weight:500; }
+
+/* proof point tracker */
+.pp-item{ display:grid; grid-template-columns:34px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--divider); }
+.pp-item:last-child{ border-bottom:none; }
+.pp-num{ width:34px; height:34px; border-radius:9px; background:var(--card-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:14px; color:var(--ink-2); }
+.pp-text{ font-size:14.5px; color:var(--ink); margin-bottom:8px; }
+.pp-status{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.pp-chip{ font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 8px; border-radius:5px; border:1px solid var(--border); color:var(--ink-3); background:var(--card-2); }
+.pp-chip.partial{ color:var(--warn); background:var(--warn-soft); border-color:color-mix(in oklab, var(--warn) 35%, var(--border)); }
+.pp-chip.hit{ color:var(--good); background:var(--good-soft); border-color:color-mix(in oklab, var(--good) 35%, var(--border)); }
+
+.footer{
+  padding:30px 48px 60px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  color:var(--ink-3);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* mobile rail collapse */
+@media (max-width:880px){
+  .shell{ grid-template-columns:1fr; }
+  .rail{ position:relative; height:auto; flex-direction:row; align-items:center; flex-wrap:wrap; padding:16px 18px; gap:14px; }
+  .rail-nav{ display:none; }
+  .rail-meta{ display:none; }
+  .rail-foot{ display:none; }
+  .rail-sub{ font-size:15px; }
+  section, .hero{ padding:32px 20px; }
+  .grid.g-2, .grid.g-3, .grid.g-4, .grid.g-5{ grid-template-columns:1fr; }
+  .gapcard{ grid-template-columns:1fr; }
+  .road{ grid-template-columns:1fr; }
+  .pp-item{ grid-template-columns:1fr; }
+}
+</style>
+
+<div class="shell">
+  <nav class="rail" aria-label="Report navigation">
+    <div class="rail-logo"><img src="data:image/avif;base64,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" alt="Meltwater"></div>
+    <div>
+      <div class="rail-title">GenAI Lens · AI Visibility Report</div>
+      <div class="rail-sub">HSBC Bank Malaysia</div>
+    </div>
+    <div class="rail-meta">
+      <div><b>Prompts:</b> 2 tested</div>
+      <div><b>Engines:</b> 7 models</div>
+      <div><b>Period:</b> Single snapshot</div>
+      <div><b>Snapshot:</b> 21 Sep 2026</div>
+    </div>
+    <div class="rail-nav" id="railnav">
+      <a href="#methodology"><span class="num">01</span>Methodology &amp; scope</a>
+      <a href="#summary"><span class="num">02</span>Executive summary</a>
+      <a href="#scorecard"><span class="num">03</span>Visibility scorecard</a>
+      <a href="#citations"><span class="num">04</span>Citation vs. mention</a>
+      <a href="#sources"><span class="num">05</span>Top sources</a>
+      <a href="#voices"><span class="num">06</span>Top voices</a>
+      <a href="#gaps"><span class="num">07</span>Gaps &amp; opportunities</a>
+      <a href="#roadmap"><span class="num">08</span>Next steps</a>
+    </div>
+    <div class="rail-foot">AI Visibility Intelligence Report<br>Prepared by Meltwater Solutions Consulting<br>For HSBC Malaysia Marketing &amp; Communications</div>
+  </nav>
+
+  <main class="main">
+    <header class="hero">
+      <div class="eyebrow">Powered by Meltwater GenAI Lens</div>
+      <h1>Which bank do AI engines say is best in Malaysia — and best for expats?</h1>
+      <p class="lede">A two-prompt visibility baseline for HSBC Bank Malaysia across seven leading AI answer engines — testing a broad "best bank" prompt against a narrower "best international bank" prompt, benchmarked against Public Bank Berhad and UOB Malaysia.</p>
+      <div class="chip-row">
+        <span class="chip">🏦 <b>Primary brand:</b> HSBC Bank Malaysia</span>
+        <span class="chip">🤖 <b>7 engines</b> analysed</span>
+        <span class="chip">📅 <b>Snapshot:</b> 21 Sep 2026</span>
+        <span class="chip">💬 <b>2 prompts</b> tested</span>
+      </div>
+    </header>
+
+    <!-- ============ 01 METHODOLOGY ============ -->
+    <section id="methodology">
+      <div class="sec-head">
+  <span class="sec-num">01</span>
+  <h2>Methodology &amp; scope</h2>
+</div>
+<p class="sec-dek">How this report was built, what it measures, and its boundaries — read this before the findings below.</p>
+
+<div class="grid g-3" style="margin-bottom:20px;">
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">Prompts tested</div>
+      <div class="val">2</div>
+      <div class="note">Run as two separate queries against every engine. See console block below for exact wording.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">AI engines covered</div>
+      <div class="val">7</div>
+      <div class="note">GPT&#8209;5 · DeepSeek&#8209;R1 · Grok&#8209;4 · Bing Copilot · Google AI Mode · Google AI Overviews · Sonar Pro (Perplexity)</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">Tracked entities</div>
+      <div class="val">3</div>
+      <div class="note">HSBC Bank Malaysia (primary) vs. Public Bank Berhad and UOB Malaysia as the benchmark set.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:12px;">Prompts run</h3>
+  <div class="console">
+    <div><span class="p1">Prompt 1&nbsp;&nbsp;</span><span class="p2">"Best bank in Malaysia"</span></div>
+    <div><span class="p1">Prompt 2&nbsp;&nbsp;</span><span class="p2">"Best international bank in Malaysia"</span></div>
+  </div>
+</div>
+
+<div class="grid g-2">
+  <div class="card">
+    <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:12px;">Data period &amp; volume</h3>
+    <p style="font-size:14.5px;color:var(--ink-2);line-height:1.65;margin:0 0 10px;">A <b class="mono" style="color:var(--ink);">single capture snapshot</b> taken <b class="mono" style="color:var(--ink);">21 Sep 2026</b> and exported <b class="mono" style="color:var(--ink);">22 Sep 2026</b>. Across both prompts and seven engines, GenAI Lens logged <b>120 total citations</b> and just <b>16 combined mentions</b> across the three tracked entities (HSBC 6, Public Bank Berhad 7, UOB Malaysia 3).</p>
+    <p style="font-size:13.5px;color:var(--ink-3);line-height:1.6;margin:0;">Visibility, Prominence, Prevalence and Sentiment scores are 0–100 GenAI Lens composites; Sentiment 50 = neutral. Frequency is average mentions per AI response.</p>
+  </div>
+  <div class="card">
+    <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:12px;">Scope &amp; boundaries — read before trusting these numbers</h3>
+    <ul style="margin:0;padding-left:18px;font-size:14px;color:var(--ink-2);line-height:1.85;">
+      <li><b style="color:var(--ink);">This is a small, single-day sample</b> — two prompts, one snapshot, no multi-day trend. Treat every figure in this report as <b style="color:var(--ink);">directional</b>, not a statistically robust benchmark. See §07 for a recommendation to widen the run.</li>
+      <li>Benchmark set is fixed to the 3 entities GenAI Lens tracked in this export — Malaysia's largest banks by assets (Maybank, CIMB, Public Bank) and other international players (Standard Chartered, Citibank, OCBC) surface heavily in the word‑cloud data but are <b style="color:var(--ink);">not</b> all scored entities here (see §07).</li>
+      <li>No byline‑level journalist data was exported for this run, so §06 profiles outlets rather than individual reporters.</li>
+      <li>All figures below are drawn directly from the attached GenAI Lens exports — nothing in this report is illustrative or mocked.</li>
+    </ul>
+  </div>
+</div>
+
+    </section>
+
+    <!-- ============ 02 EXEC SUMMARY ============ -->
+    <section id="summary">
+      <div class="sec-head">
+  <span class="sec-num">02</span>
+  <h2>Executive summary</h2>
+</div>
+<p class="sec-dek">HSBC leads the three tracked entities on both visibility and sentiment — but the tracked set is narrow, and two of seven engines don't mention HSBC at all on these prompts.</p>
+
+<div class="grid g-4" style="margin-bottom:28px;">
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">HSBC Visibility</div>
+      <div class="val">37<span class="unit">/100</span></div>
+      <div class="delta good">Highest of the 3 tracked banks</div>
+      <div class="note">Public Bank Berhad: 31 · UOB Malaysia: 21</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">HSBC Sentiment</div>
+      <div class="val">70<span class="unit">/100</span></div>
+      <div class="delta good">3 positive · 2 neutral · 0 negative</div>
+      <div class="note">Best of the tracked 3 — Public Bank 63, UOB 57.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">HSBC Mentions</div>
+      <div class="val">6</div>
+      <div class="delta flat">Second of 3 tracked banks</div>
+      <div class="note">Public Bank Berhad edges ahead on raw mentions: 7.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">Owned citation share</div>
+      <div class="val">2.5<span class="unit">%</span></div>
+      <div class="delta bad">3 of 120 total citations</div>
+      <div class="note">hsbc.com.my ranks 14th of 47 cited domains.</div>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="split-col working">
+    <h3><span class="dot"></span>What's working</h3>
+    <ul>
+      <li><b>Leads the tracked set on Visibility and Sentiment</b> — 37 and 70 respectively, ahead of both Public Bank Berhad (31, 63) and UOB Malaysia (21, 57).</li>
+      <li><b>Clean, positive sentiment profile</b> — 3 of 5 concept-level mentions scored positive, none negative, consistent with the aspect summary: "widely regarded as the top international bank for expats… praised for its global network, premium services, and strong digital offerings."</li>
+      <li><b>Dominant on Google AI Overview</b> — a score of 63, the single highest result any tracked entity achieves on any engine in this dataset.</li>
+      <li><b>Consistent presence across 5 of 7 engines</b> — GPT‑5 (47), Grok‑4 (48), Bing Copilot (43), Google AI Mode (43) and Google AI Overview (63) all surface HSBC.</li>
+    </ul>
+  </div>
+  <div class="split-col gap">
+    <h3><span class="dot"></span>Where the gap is</h3>
+    <ul>
+      <li><b>Invisible on 2 of 7 engines</b> — DeepSeek‑R1 and Sonar Pro return a Visibility score of 0 for HSBC on both prompts. DeepSeek's answer appears to be entirely about Public Bank Berhad (77) instead.</li>
+      <li><b>Public Bank Berhad edges ahead on raw mentions</b> (7 vs. 6) and dominates DeepSeek‑R1 (77) and ties HSBC on Bing Copilot (77 vs. 43) — a purely domestic retail bank outperforming HSBC's international positioning on two engines.</li>
+      <li><b>Thin owned-citation footprint</b> — hsbc.com.my contributes only 3 of 120 total citations (2.5%), ranking 14th of 47 domains. The narrative is being shaped almost entirely by third-party sources.</li>
+      <li><b>The tracked set misses Malaysia's actual market leaders</b> — the word‑cloud shows Maybank (45 mentions) and CIMB (36) dominating the "best bank" conversation, far ahead of the combined 16 mentions across all 3 tracked entities. Neither is benchmarked here (see §07).</li>
+    </ul>
+  </div>
+</div>
+
+    </section>
+
+    <!-- ============ 03 SCORECARD ============ -->
+    <section id="scorecard">
+      <div class="sec-head">
+  <span class="sec-num">03</span>
+  <h2>AI visibility scorecard</h2>
+</div>
+<p class="sec-dek">HSBC vs. two benchmarked Malaysian banks, aggregated across both prompts and seven engines. Colour is fixed per entity throughout this report — it never re-sorts with rank.</p>
+
+<div class="card" style="margin-bottom:20px;">
+  <div class="legend">
+    <span class="item"><span class="sw" style="background:var(--c-wb)"></span>Public Bank Berhad</span>
+    <span class="item"><span class="sw" style="background:var(--c-iadb)"></span>UOB Malaysia</span>
+    <span class="item"><span class="sw" style="background:var(--c-adb)"></span>HSBC Bank Malaysia</span>
+  </div>
+  <div class="barlist">
+    <div class="barrow">
+      <div class="name"><span class="sw" style="background:var(--c-wb)"></span>Public Bank Berhad</div>
+      <div class="track"><div class="fill" style="width:31%;background:var(--c-wb);"></div></div>
+      <div class="score">31</div>
+    </div>
+    <div class="barrow">
+      <div class="name"><span class="sw" style="background:var(--c-iadb)"></span>UOB Malaysia</div>
+      <div class="track"><div class="fill" style="width:21%;background:var(--c-iadb);"></div></div>
+      <div class="score">21</div>
+    </div>
+    <div class="barrow">
+      <div class="name"><span class="sw" style="background:var(--c-adb)"></span>HSBC <span class="badge-primary">Primary</span></div>
+      <div class="track"><div class="fill" style="width:37%;background:var(--c-adb);"></div></div>
+      <div class="score">37</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:14px;">Visibility by engine</h3>
+  <div class="heatwrap">
+    <table class="heat">
+      <thead>
+        <tr>
+          <th class="rowh">Entity</th>
+          <th>DeepSeek‑R1</th><th>GPT‑5</th><th>Grok‑4</th><th>Bing Copilot</th><th>Google AI Mode</th><th>Google AI Overview</th><th>Sonar Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rowh">Public Bank Berhad</td>
+          <td class="cell"><div class="hcell v4" data-tip="77/100">77</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v4" data-tip="77/100">77</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+        </tr>
+        <tr>
+          <td class="rowh">UOB Malaysia</td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="44/100">44</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="43/100">43</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="41/100">41</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+        </tr>
+        <tr>
+          <td class="rowh">HSBC <span class="badge-primary">Primary</span></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="47/100">47</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="48/100">48</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="43/100">43</div></td>
+          <td class="cell"><div class="hcell v2" data-tip="43/100">43</div></td>
+          <td class="cell"><div class="hcell v3" data-tip="63/100">63</div></td>
+          <td class="cell"><div class="hcell v0" data-tip="0/100">0</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;">Striking pattern: DeepSeek‑R1 and Sonar Pro return <b style="color:var(--ink);">zero</b> visibility for both HSBC and UOB on these prompts — DeepSeek's answer appears built entirely around Public Bank Berhad, while Sonar Pro doesn't surface any of the 3 tracked entities at all.</p>
+</div>
+
+<div class="card">
+  <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:14px;">Full metric comparison</h3>
+  <div class="dt-scroll">
+    <table class="dt">
+      <thead>
+        <tr><th>Entity</th><th class="num">Visibility</th><th class="num">Prominence</th><th class="num">Prevalence</th><th class="num">Sentiment</th><th class="num">Frequency</th><th class="num">Mentions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Public Bank Berhad</td><td class="num">31</td><td class="num">96</td><td class="num">14</td><td class="num">63</td><td class="num">0.50</td><td class="num">7</td></tr>
+        <tr><td>UOB Malaysia</td><td class="num">21</td><td class="num">52</td><td class="num">21</td><td class="num">57</td><td class="num">0.21</td><td class="num">3</td></tr>
+        <tr class="hl"><td>HSBC Bank Malaysia <span class="badge-primary">Primary</span></td><td class="num">37</td><td class="num">79</td><td class="num">36</td><td class="num">70</td><td class="num">0.43</td><td class="num">6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;">Note the Prominence / Prevalence split: Public Bank Berhad ranks highest in the answer <i>when</i> it appears (Prominence 96) but appears in far fewer responses overall (Prevalence 14). HSBC is the reverse — slightly lower Prominence (79) but the widest spread across responses (Prevalence 36), the most consistent presence of the three.</p>
+</div>
+
+    </section>
+
+    <!-- ============ 04 CITATION VS MENTION ============ -->
+    <section id="citations">
+      <div class="sec-head">
+  <span class="sec-num">04</span>
+  <h2>Citation vs. mention deep dive</h2>
+</div>
+<p class="sec-dek">How often each bank is <i>talked about</i> (mentions) versus how often AI engines actually <i>link to its own domain</i> as a citation.</p>
+
+<div class="grid g-3" style="margin-bottom:20px;">
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">HSBC · owned citations</div>
+      <div class="val">3</div>
+      <div class="note">hsbc.com.my — rank 14 of 47 cited domains.</div>
+      <div class="rate-chip warn" style="margin-top:8px;">2.5% of all 120 citations</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">UOB Malaysia · owned citations</div>
+      <div class="val">2</div>
+      <div class="note">uob.com.my — rank 30, tagged Competitor.</div>
+      <div class="rate-chip crit" style="margin-top:8px;">1.7% of all 120 citations</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="kpi">
+      <div class="lbl">Public Bank Berhad · owned citations</div>
+      <div class="val">0</div>
+      <div class="note">pbebank.com does not appear anywhere in the 47 ranked sources.</div>
+      <div class="rate-chip crit" style="margin-top:8px;">Leads on mentions, zero owned pull-through</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid g-2">
+  <div class="card">
+    <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:6px;">All 120 citations, by type</h3>
+    <p style="font-size:13.5px;color:var(--ink-2);margin:0 0 16px;">A very different shape from a typical GenAI Lens run — almost nothing lands in the standard News / Wiki / Social / Press-release buckets.</p>
+    <div class="stack" style="margin-bottom:14px;">
+      <div class="seg" style="width:95.8%;background:var(--c-other,#7C8A85);">95.8%</div>
+      <div class="seg" style="width:2.5%;background:var(--c-owned);"></div>
+      <div class="seg" style="width:1.7%;background:var(--c-competitor);"></div>
+    </div>
+    <div class="legend" style="margin-bottom:0;">
+      <span class="item"><span class="sw" style="background:var(--c-other,#7C8A85)"></span>Other · 115 (95.8%)</span>
+      <span class="item"><span class="sw" style="background:var(--c-owned)"></span>Owned · 3 (2.5%)</span>
+      <span class="item"><span class="sw" style="background:var(--c-competitor)"></span>Competitor · 2 (1.7%)</span>
+      <span class="item"><span class="sw" style="background:var(--card-2);border:1px solid var(--border);"></span>News / Wiki / Social / PR · 0</span>
+    </div>
+    <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;">The "Other" bucket includes several outlets that read as bona fide news — The Star, The Edge Malaysia, Bernama — but GenAI Lens's source-type classifier hasn't tagged them as "Earned/News" in this export. Worth a data-quality check before trusting the 0% News figure at face value.</p>
+  </div>
+  <div class="card">
+    <h3 style="font-size:15px;font-family:'Manrope',sans-serif;margin-bottom:10px;">Reading the owned-citation gap</h3>
+    <p style="font-size:14px;color:var(--ink-2);line-height:1.7;margin:0 0 14px;">All three tracked banks show a thin owned-citation footprint, but the pattern differs by bank. HSBC's 3 citations to hsbc.com.my are the strongest of the three, yet still only <b style="color:var(--ink);">half of one percent</b> of the way to matching its mention share. UOB pulls 2 citations to uob.com.my. Public Bank Berhad — despite leading all three on raw mentions (7) and dominating two engines outright — has <b style="color:var(--ink);">no owned-domain citations at all</b> in this dataset; every AI answer that surfaces it is relying entirely on third-party sources.</p>
+    <p style="font-size:13.5px;color:var(--ink-2);line-height:1.7;margin:0;">For a category this thin on owned pull-through across the board, the opportunity is less about defending share from competitors and more about giving AI engines <i>any</i> citable, authoritative HSBC content to draw on for these prompts (see §07 and §08).</p>
+  </div>
+</div>
+
+    </section>
+
+    <!-- ============ 05 TOP SOURCES ============ -->
+    <section id="sources">
+      <div class="sec-head">
+  <span class="sec-num">05</span>
+  <h2>Top sources cited</h2>
+</div>
+<p class="sec-dek">The domains AI engines drew on most often across both prompts, with an authority read on each. Ranked by citation count out of 120 total.</p>
+
+<div class="card">
+  <div class="dt-scroll">
+    <table class="dt">
+      <thead>
+        <tr><th>#</th><th>Source</th><th>Type</th><th class="num">Citations</th><th>Authority read</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">1</td><td>thestar.com.my</td><td><span class="tag neutral">Other</span></td><td class="num">10</td><td>The Star — a major English-language Malaysian daily; strong general authority.</td></tr>
+        <tr><td class="num">2</td><td>theedgemalaysia.com</td><td><span class="tag neutral">Other</span></td><td class="num">7</td><td>The Edge Malaysia — the country's leading business/financial publication; high authority specifically for banking coverage.</td></tr>
+        <tr><td class="num">3</td><td>cimb.com</td><td><span class="tag neutral">Other</span></td><td class="num">6</td><td>CIMB's own domain, surfacing organically even though CIMB isn't a tracked entity — a primary source for CIMB's own claims.</td></tr>
+        <tr><td class="num">4</td><td>bernama.com</td><td><span class="tag neutral">Other</span></td><td class="num">5</td><td>Bernama — Malaysia's national news agency; high, official authority.</td></tr>
+        <tr><td class="num">5</td><td>reddit.com</td><td><span class="tag neutral">Other</span></td><td class="num">5</td><td>Community platform — mixed authority, but topically central: "which bank is best" is exactly the kind of question people ask on Reddit threads.</td></tr>
+        <tr><td class="num">6</td><td>wise.com</td><td><span class="tag neutral">Other</span></td><td class="num">5</td><td>Remittance fintech's own content-marketing blog; medium authority, commercially motivated.</td></tr>
+        <tr><td class="num">7</td><td>worldfirst.com</td><td><span class="tag neutral">Other</span></td><td class="num">5</td><td>Remittance fintech blog; same pattern as Wise — medium authority, content-marketing driven.</td></tr>
+        <tr><td class="num">8</td><td>acemoneytransfer.com</td><td><span class="tag neutral">Other</span></td><td class="num">4</td><td>Remittance company blog; lower authority, comparison-style content.</td></tr>
+        <tr><td class="num">9</td><td>airwallex.com</td><td><span class="tag neutral">Other</span></td><td class="num">4</td><td>Fintech company blog; medium authority, commercially motivated.</td></tr>
+        <tr><td class="num">10</td><td>bonjourmalaisie.com</td><td><span class="tag neutral">Other</span></td><td class="num">3</td><td>French-language expat guide site; niche but directly relevant audience.</td></tr>
+        <tr><td class="num">11</td><td>facebook.com</td><td><span class="tag neutral">Social</span></td><td class="num">3</td><td>Platform citation — authority depends entirely on the linked post.</td></tr>
+        <tr><td class="num">12</td><td>fintechnews.my</td><td><span class="tag neutral">Other</span></td><td class="num">3</td><td>Malaysia fintech trade publication; medium-high authority for sector-specific coverage.</td></tr>
+        <tr><td class="num">13</td><td>forbes.com</td><td><span class="tag neutral">Other</span></td><td class="num">3</td><td>Global business media; high general authority.</td></tr>
+        <tr class="hl"><td class="num">14</td><td>hsbc.com.my</td><td><span class="tag owned">Owned</span></td><td class="num">3</td><td>HSBC's own domain — primary source, but well down the ranking.</td></tr>
+        <tr><td class="num">15</td><td>investasian.com</td><td><span class="tag neutral">Other</span></td><td class="num">3</td><td>Investment/expat guide blog; medium authority for the expat-banking niche.</td></tr>
+        <tr><td class="num">16</td><td>investmentsforexpats.com</td><td><span class="tag neutral">Other</span></td><td class="num">3</td><td>Expat financial-planning blog; medium authority, same niche as #15.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;">Read: a genuine mix of mainstream Malaysian press (The Star, The Edge, Bernama), a cluster of remittance/fintech content-marketing blogs (Wise, WorldFirst, Ace Money Transfer, Airwallex) competing directly for "best bank" search intent, and expat-focused guide sites (Bonjour Malaisie, InvestAsian, Investments for Expats) that speak precisely to the "best international bank" prompt. HSBC's own domain sits mid-table at rank 14 — competitive, but not dominant. Elsewhere in the full 47-source list: uob.com.my ranks 30th (2 citations) and sc.com — Standard Chartered's domain — ranks 27th (2 citations), despite Standard Chartered not being a tracked entity.</p>
+</div>
+
+    </section>
+
+    <!-- ============ 06 TOP VOICES ============ -->
+    <section id="voices">
+      <div class="sec-head">
+  <span class="sec-num">06</span>
+  <h2>Top voices</h2>
+</div>
+<p class="sec-dek">This export doesn't carry byline-level journalist data — GenAI Lens attributes citations to publications, not individual reporters. The outlets and clusters below are the most-cited voices shaping the AI narrative on "best bank in Malaysia."</p>
+
+<div class="grid g-3">
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--c-adb);">TS</div>
+      <div>
+        <div class="jname">The Star</div>
+        <div class="jrole">Malaysia's leading English daily</div>
+      </div>
+    </div>
+    <div class="jcard jquote">The single most-cited domain in this dataset — general news coverage of the Malaysian banking sector that AI engines lean on for broad "best bank" framing.</div>
+    <div class="jmeta">10 citations · rank 1 of 47</div>
+  </div>
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--c-adb);">TE</div>
+      <div>
+        <div class="jname">The Edge Malaysia</div>
+        <div class="jrole">Leading business &amp; financial publication</div>
+      </div>
+    </div>
+    <div class="jcard jquote">The highest-authority banking-specific source in the set — coverage of bank performance, ratings and strategy that carries real weight on financial questions.</div>
+    <div class="jmeta">7 citations · rank 2 of 47</div>
+  </div>
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--c-adb);">BN</div>
+      <div>
+        <div class="jname">Bernama</div>
+        <div class="jrole">Malaysia's national news agency</div>
+      </div>
+    </div>
+    <div class="jcard jquote">Official wire-service coverage — the closest thing to a government-adjacent, authoritative voice in the source mix.</div>
+    <div class="jmeta">5 citations · rank 4 of 47</div>
+  </div>
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--ink-3);">R</div>
+      <div>
+        <div class="jname">Reddit</div>
+        <div class="jrole">Community discussion platform</div>
+      </div>
+    </div>
+    <div class="jcard jquote">Real people answering "which bank is best" in their own words — AI engines treat these threads as a proxy for genuine customer sentiment on exactly this question.</div>
+    <div class="jmeta">5 citations · rank 5 of 47</div>
+  </div>
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--c-iadb);">FX</div>
+      <div>
+        <div class="jname">Wise · WorldFirst · Ace Money Transfer · Airwallex</div>
+        <div class="jrole">Remittance &amp; fintech content-marketing cluster</div>
+      </div>
+    </div>
+    <div class="jcard jquote">Four competing fintechs, each publishing "best bank" comparison content aimed at exactly this search intent — a content-marketing category HSBC currently has no equivalent presence in.</div>
+    <div class="jmeta">18 combined citations across 4 outlets</div>
+  </div>
+  <div class="card">
+    <div class="jcard">
+      <div class="avatar" style="background:var(--c-iadb);">EX</div>
+      <div>
+        <div class="jname">Bonjour Malaisie · InvestAsian · Investments for Expats</div>
+        <div class="jrole">Expat guide &amp; blog cluster</div>
+      </div>
+    </div>
+    <div class="jcard jquote">Independent expat-focused guides answering the "best international bank" prompt directly — exactly HSBC's strongest positioning, but carried by third-party voices rather than HSBC's own content.</div>
+    <div class="jmeta">9 combined citations across 3 outlets</div>
+  </div>
+</div>
+
+    </section>
+
+    <!-- ============ 07 GAPS ============ -->
+    <section id="gaps">
+      <div class="sec-head">
+  <span class="sec-num">07</span>
+  <h2>Competitive gaps &amp; opportunities</h2>
+</div>
+<p class="sec-dek">Ranked by how much they're likely to move HSBC's standing on these prompts.</p>
+
+<div class="card">
+  <div class="gapcard">
+    <div class="sev high">High</div>
+    <div>
+      <h4>HSBC is invisible on 2 of 7 engines</h4>
+      <p>DeepSeek‑R1 and Sonar Pro return a Visibility score of 0 for HSBC on both prompts. DeepSeek's answer instead appears built almost entirely around Public Bank Berhad (77), while Sonar Pro doesn't surface any of the 3 tracked banks at all — likely defaulting to Malaysia's larger local banks instead.</p>
+      <div class="action"><b>Recommended action</b>Investigate what content these two engines draw on for Malaysia banking queries and whether HSBC has any indexable presence in it — this is the single biggest lever on the overall Visibility score.</div>
+    </div>
+  </div>
+  <div class="gapcard">
+    <div class="sev high">High</div>
+    <div>
+      <h4>The tracked benchmark set misses Malaysia's market leaders</h4>
+      <p>The word‑cloud shows Maybank (45 mentions) and CIMB (36) dominating the "best bank in Malaysia" conversation — more than double the combined 16 mentions across all 3 tracked entities. Standard Chartered (14), Hong Leong Bank (11) and RHB (8) also outrank UOB Malaysia (3) as competitors in the international/large-bank conversation.</p>
+      <div class="action"><b>Recommended action</b>Expand the tracked entity set to include Maybank, CIMB, Standard Chartered and Hong Leong Bank for a competitive picture that reflects what AI engines are actually comparing HSBC against.</div>
+    </div>
+  </div>
+  <div class="gapcard">
+    <div class="sev medium">Medium</div>
+    <div>
+      <h4>A domestic retail bank is out-mentioning HSBC</h4>
+      <p>Public Bank Berhad — a purely domestic retail bank with no international positioning — edges HSBC on raw mentions (7 vs. 6) and dominates two engines outright, despite having zero owned-domain citations anywhere in this dataset. Its visibility is being carried entirely by third parties.</p>
+      <div class="action"><b>Recommended action</b>Worth understanding qualitatively why DeepSeek and Bing default to Public Bank Berhad — it may simply reflect Malaysia's largest branch network and retail footprint rather than anything HSBC can directly counter.</div>
+    </div>
+  </div>
+  <div class="gapcard">
+    <div class="sev medium">Medium</div>
+    <div>
+      <h4>Content-marketing competitors own the "best bank" search intent</h4>
+      <p>Four remittance/fintech blogs (Wise, WorldFirst, Ace Money Transfer, Airwallex) contribute 18 combined citations with comparison-style "best bank" content — a content category HSBC has no visible presence in. Meanwhile three independent expat guides carry 9 citations answering almost exactly HSBC's "best international bank" positioning, without HSBC's own voice in the mix.</p>
+      <div class="action"><b>Recommended action</b>Publish HSBC-authored comparison/guide content targeting "best bank in Malaysia for expats" style queries — the fintech blogs prove the format works; HSBC currently isn't competing in it directly.</div>
+    </div>
+  </div>
+  <div class="gapcard">
+    <div class="sev low">Low</div>
+    <div>
+      <h4>Sample size is small — treat findings as directional</h4>
+      <p>This run covers 2 prompts and a single one-day snapshot, with only 16 combined mentions across the 3 tracked entities. Individual engine scores (especially the 0s on DeepSeek and Sonar Pro) could shift meaningfully with a larger prompt set or a different capture date.</p>
+      <div class="action"><b>Recommended action</b>No urgent action needed, but avoid treating any single number here — especially the engine-level zeros — as a fixed, permanent state without a follow-up run.</div>
+    </div>
+  </div>
+</div>
+
+    </section>
+
+    <!-- ============ 08 NEXT STEPS ============ -->
+    <section id="roadmap">
+      <div class="sec-head">
+  <span class="sec-num">08</span>
+  <h2>Recommended next steps</h2>
+</div>
+<p class="sec-dek">A phased plan to close the DeepSeek/Sonar Pro visibility gap, widen the benchmark to Malaysia's real competitive set, and build HSBC's own presence in "best bank" content.</p>
+
+<div class="road">
+  <div class="phase">
+    <div class="when">Now</div>
+    <h4>Diagnose the blind spots</h4>
+    <ul>
+      <li>Audit what DeepSeek‑R1 and Sonar Pro actually answer for these two prompts, and what sources they lean on.<span class="owner">Owner: Insights</span></li>
+      <li>Confirm whether hsbc.com.my has any content structured to directly answer "best bank" / "best international bank" style queries.<span class="owner">Owner: SEO/Content</span></li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="when">Weeks 2–4</div>
+    <h4>Widen the benchmark</h4>
+    <ul>
+      <li>Add Maybank, CIMB, Standard Chartered and Hong Leong Bank as tracked entities to reflect the real competitive field.<span class="owner">Owner: Meltwater/Insights</span></li>
+      <li>Re-run across a full week (not a single snapshot) to confirm the DeepSeek/Sonar Pro zeros are stable, not a one-off.<span class="owner">Owner: Insights</span></li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="when">Weeks 4–8</div>
+    <h4>Compete in "best bank" content</h4>
+    <ul>
+      <li>Publish HSBC-authored comparison content for "best bank in Malaysia for expats" and similar framings, matching the format the fintech blogs already use successfully.<span class="owner">Owner: Content/Marketing</span></li>
+      <li>Pursue mentions in Malaysia's expat-guide cluster (Bonjour Malaisie, InvestAsian, Investments for Expats) where HSBC's positioning already fits naturally.<span class="owner">Owner: PR/Comms</span></li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="when">Ongoing</div>
+    <h4>Track the expanded picture</h4>
+    <ul>
+      <li>Monitor Visibility and Sentiment against the widened competitor set on a recurring cadence, not just a single snapshot.<span class="owner">Owner: Insights</span></li>
+      <li>Watch whether Public Bank Berhad's DeepSeek/Bing dominance persists or reflects a one-off training/retrieval quirk.<span class="owner">Owner: Insights</span></li>
+    </ul>
+  </div>
+</div>
+
+    </section>
+
+    <div class="footer">
+      <span>AI Visibility Intelligence Report · HSBC Bank Malaysia · Snapshot 21 Sep 2026 · Powered by Meltwater GenAI Lens</span>
+      <span>All figures are sourced from the attached GenAI Lens export covering two prompts, single-day snapshot. Point-in-time AI answers vary by model version, user location and session context — treat as directional given the small sample.</span>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail-nav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 120;
+    var idx = 0;
+    for(var i=0;i<sections.length;i++){ if(sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function(a,i){ a.classList.toggle('active', i===idx); });
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
